@@ -1,0 +1,21 @@
+.return{
+    margin-right: 3%;
+        min-width: 22%;
+       
+}
+.musicac{
+    min-width: 22%;
+    height: 73%;
+    border-radius: 40px;
+    background-color: white;
+    overflow: hidden;
+
+}
+    
+    .videoH img {
+        width: 100%;
+        height: 100%;
+        block-size: cover;
+        object-position: left;
+        object-fit: cover;
+    }

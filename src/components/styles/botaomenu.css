@@ -1,0 +1,14 @@
+
+.corpob{
+    height: 8%;
+    align-items: center;
+    justify-content: space-between;
+}
+.p1{
+    background-color: #202425 ;
+    align-items: center;
+    justify-content: center;
+    color:#8f8f8f;
+    cursor: pointer;
+    text-decoration: none;
+}

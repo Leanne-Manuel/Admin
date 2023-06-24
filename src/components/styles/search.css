@@ -1,0 +1,12 @@
+.corposb{
+    width: 98%;
+    height: 9vh;
+}
+ .pesquisaF{
+    width: 98%;
+    height: 6vh;
+    position: relative;
+    border-radius: 15px;
+    background-color: #202425;
+    border-style: none;
+}

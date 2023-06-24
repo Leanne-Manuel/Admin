@@ -1,0 +1,42 @@
+.corpoM{
+    top: 0;
+    width: 18%;
+    height: 100vh;
+    background-color: #202425;
+    position: absolute;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+}
+ul{
+    list-style: none;
+    text-decoration: none;
+    
+    
+}
+li{
+    background-color: #202425;
+    margin-top: 23%;
+}
+
+.dLink{ 
+text-decoration: none;
+}
+.logotipo{
+
+
+    display: flex;
+    width: 100%;
+    height: 13vh;
+    margin-left: 23%;
+    align-items: center;
+
+}
+
+.BotaoMenu svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    fill: #333;
+  }
+  

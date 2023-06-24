@@ -1,0 +1,12 @@
+
+.corpoI{
+    width: 96%;
+    height: 8vh;
+    background-color: #25292C;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: white;
+}
