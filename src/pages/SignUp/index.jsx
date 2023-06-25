@@ -1,17 +1,14 @@
 import "./signuo.css";
 
-import React, { useContext } from "react";
 import "./signuo.css";
 // import "./Mains.js";
 import endpoints from "../../api/endpoints";
-import { AuthContext } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { UserSchema } from "../../utils/user";
 
 const notify = () =>
   toast("Registo feito, agora faca login!", {
