@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./Login.css";
 // import "./Mains.js";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/AuthContext.tsx";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,22 +29,21 @@ function LoginForm() {
     ({ email, password }) => context.signIn({ email, password }),
     {
       onSuccess: () => {
-       notify();
-       setTimeout(() => {
-         navigate("/feed/discovery");
-       }, 3000);
+        notify();
+        setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      },
+      onError: (error) => {
+        toast.error(error.message);
       },
     }
   );
 
   const onSubmit = async (data) => {
     console.log(data);
-    await mutateAsync(data).catch((res) => {
-      if (res.response.status === 401) {
-        toast.error("Email ou senha incorretos");
-      } else if (res.response.status === 500) {
-        toast.error("Erro interno do servidor");
-      }
+    await mutateAsync(data).catch((error) => {
+      console.log(error);
     });
   };
 
@@ -56,7 +55,7 @@ function LoginForm() {
       <div className="containerForm">
         <form className="formContent" onSubmit={handleSubmit(onSubmit)}>
           <label></label>
-          
+
           <input
             className="texti"
             type="text"

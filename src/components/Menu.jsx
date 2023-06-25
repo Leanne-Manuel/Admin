@@ -39,6 +39,11 @@ export default function Menu() {
               <BotaoMenu nome="Minha conta"/>
             </Link>
           </li>
+          <li>
+            <Link className="dLink" to={"/Upload"}>
+              <BotaoMenu nome="Upload"/>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
