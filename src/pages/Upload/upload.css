@@ -8,7 +8,7 @@
     width: 50%;
     height: 5vh;
    background-color:  #ffffff;
-   border: 2px solid #3e4041;
+   border: 2px solid #ffffff;
    border-radius: 6px;
 }
 .fics{
@@ -18,7 +18,8 @@
     margin-top: 5%;
       width: 90%;
     height: 26vh;
-    border: solid 2px  #3e4041;
+    border: solid 2px  #ffffff;
+    background-color: #d0d0d0;
     border-radius: 5px;
     align-items: center;
     margin-bottom: 5%;
@@ -27,9 +28,9 @@
 .btnC{
       width: 90%;
     height: 6vh;
-    background-color:#3e4041;
+    background-color:#585858;
     border-radius: 8px;
-    
+    color: #ffffff;
 
 }
 .btnC:hover{
@@ -38,10 +39,20 @@
 .cima{
     width: 90%;
     height: 16vh;
-    border: solid 2px  #3e4041;
     border-radius: 5px;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background-color: #d0d0d0;
     
+}
+.cima p{
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.fics p{
+    color: black;
+    text-decoration: none;
+    font-size: 1.2rem;
 }

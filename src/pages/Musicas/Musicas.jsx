@@ -1,79 +1,87 @@
-import React from "react";
-import "./Musicas.css";
-import { MdModeEdit, MdDelete } from "react-icons/md";
+import React, { Fragment, useState } from "react";
+import { IconButton, CircularProgress } from "@mui/material";
+import { useQuery } from "react-query";
+import endpoints from "../../api/endpoints";
+import Music from "../../components/Music";
+import styles from "./styles.module.css";
 
-class Musicas extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      news: [
-        {
-          title: "Como fazer Slime",
-          artist: "@BiaSantos",
-          image:
-            "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/07/17/10/istock-873395522.jpg",
-        },
-        {
-          title: "Como fazer Slime",
-          artist: "@BiaSantos",
-          image:
-            "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/07/17/10/istock-873395522.jpg",
-        },
-        {
-          title: "Como fazer Slime",
-          artist: "@BiaSantos",
-          image:
-            "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/07/17/10/istock-873395522.jpg",
-        },
-        {
-          title: "Versace on the floor",
-          artist: "Bruno Mars",
-          image:
-            "https://imgv3.fotor.com/images/blog-cover-image/10-profile-picture-ideas-to-make-you-stand-out.jpg",
-        },
-        {
-          title: "Versace on the floor",
-          artist: "Bruno Mars",
-          image:
-            "https://imgv3.fotor.com/images/blog-cover-image/10-profile-picture-ideas-to-make-you-stand-out.jpg",
-        },
-        {
-          title: "Versace on the floor",
-          artist: "Bruno Mars",
-          image:
-            "https://m.media-amazon.com/images/M/MV5BZWI4YmZhM2YtNjcxZS00Yzk3LWEzOTQtODAzYTgzNDUzZWM0XkEyXkFqcGdeQXVyNjE0ODc0MDc@._V1_.jpg",
-        },
-      ],
-    };
-  }
+const url = "http://localhost:3443/api/";
+function Musicas() {
+  const [search, setSearch] = useState("");
+  const { data, isLoading, isError, error } = useQuery(["getAllMusic"], () =>
+    endpoints.getAllAudio()
+  );
+  const [selectedMusic, setSelectedMusic] = useState(undefined);
 
-  render() {
-    const { news } = this.state;
+  const [results, setResults] = useState({});
 
-    return (
-      <div className="news-feed">
-        <h1>Músicas</h1>
-        <div className="news-container">
-          {news.map((item, index) => (
-            <div className="news-item" key={index}>
-              <img src={item.image} alt={item.title} />
-              <div className="news-content">
-                <h2>{item.title}</h2>
-                <p>{item.artist}</p>
+  const handleSearch = async ({ currentTarget: input }) => {
+    setSearch(input.value);
+    try {
+      // const url =`/?search=${input.value}`;
+      // await axiosInstance.get(url);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>{error.message}</div>;
+
+  const playerImage = url
+    .concat("file/")
+    .concat(selectedMusic ? selectedMusic.coverpath.split("/")[0] : "");
+
+  return (
+    <div className={styles.containerMusic}>
+      <div className={styles.mainPage}>
+        {Object.keys(data).length !== 0 && (
+          <div className={styles.results_container}>
+            {data.length !== 0 && (
+              <div className={styles.songs_container}>
+                {data.map((music) => {
+                  const coverImage = url
+                    .concat("file/")
+                    .concat(music.coverpath.split("/")[0]);
+                  return (
+                    <div
+                      key={music.id}
+                      className={styles.musicItem}
+                      onClick={() => {
+                        setSelectedMusic(music);
+                      }}
+                    >
+                      <img src={coverImage} alt="" />
+                      <div>
+                        <p>{music.titulo}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-              <div className="news-actions">
-                <button className="edit-button">
-                  <MdModeEdit color="black" />
-                </button>
-                <button className="delete-button">
-                  <MdDelete color="black" />
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+            )}
+          </div>
+        )}
       </div>
-    );
-  }
+      {selectedMusic && (
+        <div className={styles.musicPlayer}>
+          <div className={styles.metadata}>
+            <img src={playerImage} width={80} height={80} />
+            <p
+              style={{
+                color: "#000",
+              }}
+            >
+              {selectedMusic.titulo}
+            </p>
+          </div>
+          <div className={styles.player}>
+            <Music music={selectedMusic} />
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
+
 export default Musicas;
