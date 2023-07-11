@@ -5,9 +5,9 @@ import axiosInstance from "../api/axiosinstance.js";
 
 type User = {
   name: string;
-  email: string;
-  avatar?: string;
-  id: string;
+  login: {
+    username: string
+  }
 };
 
 type AuthData = {
@@ -33,11 +33,6 @@ const AuthProvider = (props: PropsWithChildren) => {
   async function checkIfUserIsAuthorized() {
     try {
       const response = await axiosInstance.get("/auth/me");
-
-      if(response.data.user.role !== "ADMIN") {
-        throw new Error("You are not authorized to access this page");
-      }
-
       setUser(response.data.user);
       setIsAuth({
         isAuth: "isLoggedIn",
@@ -62,11 +57,7 @@ const AuthProvider = (props: PropsWithChildren) => {
     password: string;
   }) {
     const response = await axiosInstance.post("/auth", { email, password });
-    console.log(response.data);
-    
-   if(response.data.userReponse.role !== "ADMIN") 
-    throw new Error("Não está autorizado a acessar esta página");
-    setUser(response.data.userReponse);
+    setUser(response.data.user);
     setIsAuth({
       isAuth: "isLoggedIn",
     });

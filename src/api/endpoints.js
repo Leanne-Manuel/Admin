@@ -1,11 +1,16 @@
 import axiosInstance from "./axiosinstance";
 
-async function getAllContent() {
-  const response = await axiosInstance.get("/conteudo/");
-  return response;
+
+async function getAllVideo() {
+  const response = await axiosInstance.get("/conteudo/getVideo");
+  return response.data;
 }
-async function getContent(id){
-  const response = await axiosInstance.get('/conteudo/'+id)
+async function getAllAudio() {
+  const response = await axiosInstance.get("/conteudo/getAudio");
+  return response.data;
+}
+async function getContent(id) {
+  const response = await axiosInstance.get("/conteudo/" + id);
   return response.data;
 }
 async function uploadFiles(files) {
@@ -15,29 +20,27 @@ async function uploadFiles(files) {
   return response.data;
 }
 
+async function getFile(name) {
+  const response = await axiosInstance.get("/file/" + name);
+  return response.data;
+}
+
 async function createContent(data) {
   await axiosInstance.post("/conteudo", data);
 }
 
-
-async function createUser(data){
-  const response= await axiosInstance.post("/user",data);
+async function createUser(data) {
+  const response = await axiosInstance.post("/user", data);
   return response.data;
 }
 
-async function gettAllCommets(){
-  const response =await axiosInstance.get("/comment");
+async function gettAllCommets() {
+  const response = await axiosInstance.get("/comment");
   return response;
 }
 
-async function gettAllUsers(){
-  const response =await axiosInstance.get("/user/");
-  return response;
-}
-
-
-async function createComment(data){
-  const response = await axiosInstance.post("/comment",data);
+async function createComment(data) {
+  const response = await axiosInstance.post("/comment", data);
   return response.data;
 }
 async function deleteComment(id) {
@@ -45,24 +48,28 @@ async function deleteComment(id) {
   return response;
 }
 
-async function gettAllLikes(){
-  const response =await axiosInstance.get("/like");
+async function gettAllLikes() {
+  const response = await axiosInstance.get("/like");
   return response;
 }
-async function deleteLike(id){
-  const response =await axiosInstance.delete("/like", +id);
+async function deleteLike(id) {
+  const response = await axiosInstance.delete("/like", +id);
   return response;
 }
 
-
-async function createLike(data){
-  const response = await axiosInstance.post("/like",data);
+async function createLike(data) {
+  const response = await axiosInstance.post("/like", data);
   return response.data;
 }
-
+async function gettAllUsers() {
+  const response = await axiosInstance.get("/user/");
+  return response;
+}
 
 export default {
-  getAllContent,
+  
+  getAllAudio,
+  getAllVideo,
   uploadFiles,
   createContent,
   createUser,
@@ -73,6 +80,8 @@ export default {
   getContent,
   deleteLike,
   deleteComment,
-  gettAllUsers
-
+  getFile,
+  gettAllUsers,
 };
+
+

@@ -6,46 +6,7 @@ import endpoints from "../../api/endpoints";
 import { useQuery } from "react-query";
 //import { useState, useEffect } from "react";
 function Usuarios() {
-
-
-
-
-
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     users: [
-  //       {
-  //         id: 1,
-  //         name: "John Doe",
-  //         email: "john.doe@example.com",
-  //         canal: "@john",
-  //       },
-  //       {
-  //         id: 2,
-  //         name: "Jane Smith",
-  //         email: "jane.smith@example.com",
-  //         canal: "@jane",
-  //       },
-  //       {
-  //         id: 3,
-  //         name: "John Doe",
-  //         email: "john.doe@example.com",
-  //         canal: "@john",
-  //       },
-  //       {
-  //         id: 4,
-  //         name: "Jane Smith",
-  //         email: "jane.smith@example.com",
-  //         canal: "@jane",
-  //       },
-  //     ],
-  //   };
-  // }
-
-  // render() {
-  //   const { users } = this.state;
-
+  
  const { data, isLoading, isError, error } = useQuery(
    ["getAllUsers"],
    () => endpoints.gettAllUsers()
@@ -73,8 +34,8 @@ function Usuarios() {
           <tbody>
             {data.data.map((user) => (
               <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
+                <td>{user.name} {user.lastname}</td>
+                <td>{user.login.email}</td>
                 <td>{user.canal}</td>
                 <td className="actions-cell">
                   <button className="edit-button">

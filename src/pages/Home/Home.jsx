@@ -3,8 +3,10 @@ import "./home.css";
 import "../../components/MRHome";
 import foto from "../../images/logo.png";
 import { Link } from "react-router-dom";
+import VideoCard from "../../components/videoCard";
+import MusiCard from "../../components/musiCard";
+import UserCard from "../../components/userCard";
 
-import { BiUser, BiMusic, BiVideo } from "react-icons/bi";
 
 export default function Home() {
   const userCount = 100;
@@ -18,30 +20,9 @@ export default function Home() {
         <h1>Administrador</h1>
       </header>
       <div className="admin-sections">
-        <div className="admin-section">
-          <BiUser className="admin-icon" />
-          <h2>Usuários</h2>
-          <p>Total: {userCount}</p>
-          <Link className="dLink" to={"/Usuarios"}>
-            <button className="admin-btn">Gerenciar Usuários</button>
-          </Link>
-        </div>
-        <div className="admin-section">
-          <BiMusic className="admin-icon" />
-          <h2>Músicas</h2>
-          <p>Total: {musicCount}</p>
-          <Link className="dLink" to={"/Musicas"}>
-            <button className="admin-btn">Gerenciar Músicas</button>
-          </Link>
-        </div>
-        <div className="admin-section">
-          <BiVideo className="admin-icon" />
-          <h2>Vídeos</h2>
-          <p>Total: {videoCount}</p>
-          <Link className="dLink" to={"/Videos"}>
-            <button className="admin-btn">Gerenciar Vídeos</button>
-          </Link>
-        </div>
+         <UserCard/>
+         <MusiCard/>
+         <VideoCard/>
       </div>
     </div>
   );

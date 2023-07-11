@@ -4,10 +4,9 @@ import "./Login.css";
 import { AuthContext } from "../../context/AuthContext.tsx";
 import { useForm } from "react-hook-form";
 import { useMutation } from "react-query";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loading from "../../components/Loading";
 import toast, { Toaster } from "react-hot-toast";
-import { color } from "@mui/system";
 
 const notify = () =>
   toast("Boa! Você está logado!", {
@@ -53,6 +52,8 @@ function LoginForm() {
       {isLoading && <Loading />}
 
       <div className="containerForm">
+        <h2>Unify Admin</h2>
+        <h4>© Unify 2023, Todos direitos reservados</h4>
         <form className="formContent" onSubmit={handleSubmit(onSubmit)}>
           <label></label>
 
@@ -78,10 +79,9 @@ function LoginForm() {
           <button className="env1" type="submit">
             Sign in
           </button>
-          <Link to="/auth/signup">
-            <span>Sign Up</span>
-          </Link>
+          
         </form>
+        <div className="rigth"></div>
       </div>
       <Toaster />
     </div>

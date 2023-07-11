@@ -5,10 +5,11 @@
     justify-content: space-between;
 }
 .p1{
-    background-color: #202425 ;
+    background-color: #d0d0d0 ;
     align-items: center;
     justify-content: center;
-    color:#8f8f8f;
+    color:#030303;
     cursor: pointer;
     text-decoration: none;
+    font-size: 1.2rem;
 }
