@@ -11,6 +11,7 @@ import RegForm from "../pages/SignUp";
 import LoginForm from "../pages/Login";
 import LayoutHome from "../components/LayoutHome";
 import Upload from "../pages/Upload/index";
+import EditUser from "../pages/edituser";
 import SinglePage from "../pages/Single/Single";
 export default function MainRoutes() {
   return (
@@ -32,6 +33,7 @@ export default function MainRoutes() {
         <Route path="/Musicas" element={<Musicas />} />
         <Route path="/Usuarios" element={<Usuarios />} />
         <Route path="/upload" element={<Upload />} />
+        <Route path="/:edit" element={<EditUser/>} />
         <Route path="/:VidTitle" element={<SinglePage />} />
       </Route>
     </Routes>
