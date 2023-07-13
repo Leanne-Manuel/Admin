@@ -1,6 +1,5 @@
 import axiosInstance from "./axiosinstance";
 
-
 async function getAllVideo() {
   const response = await axiosInstance.get("/conteudo/getVideo");
   return response.data;
@@ -44,7 +43,11 @@ async function createComment(data) {
   return response.data;
 }
 async function deleteComment(id) {
-  const response = await axiosInstance.delete("/comment", +id);
+  const response = await axiosInstance.delete("/comment" + id);
+  return response;
+}
+async function deleteUser(id) {
+  const response = await axiosInstance.delete("/user/" + id);
   return response;
 }
 
@@ -66,8 +69,18 @@ async function gettAllUsers() {
   return response;
 }
 
+async function updateUser(data) {
+  const datos = { name: data.name, lastname: data.lastname };
+  const id = data.id;
+
+  console.log('====================================');
+  console.log(data);
+  console.log('====================================');
+  const response = await axiosInstance.put("/user/" + id, datos);
+  return response;
+}
+
 export default {
-  
   getAllAudio,
   getAllVideo,
   uploadFiles,
@@ -82,6 +95,6 @@ export default {
   deleteComment,
   getFile,
   gettAllUsers,
+  deleteUser,
+  updateUser,
 };
-
-
